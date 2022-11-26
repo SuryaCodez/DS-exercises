@@ -1,0 +1,56 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#define m 10
+struct employees
+{
+    char name[30];
+    int id;
+    char dept[20];
+    float salary;
+};
+typedef struct employees emp;
+emp *e;
+void totalsalary()
+{
+    char dept[10];
+    float total=0;
+    printf("enter the dept of which total salary is to be obtained\n");
+    scanf("%s",dept);
+    for (int i=0;i<m;i++)
+    {
+   	 if(strcmp((e+i)->dept,dept)==0)
+   		 total+=(e+i)->salary;
+    }
+    printf("the total salary of %s is %f\n",dept,total);
+}
+void main()
+{
+
+    int n,i;
+    emp *e[m];
+    printf("welcome!\n enter the number of employees working:\n");
+    scanf("%d",&n);
+    for (int i=0;i<n;i++)
+    {
+   	 e[i]=(emp*)malloc(sizeof(emp));
+    }
+    for (int i=0;i<n;i++)
+    {
+   	 printf("enter the name of %d employee\n",i);
+   	 scanf("%s",e[i]->name);
+   	 printf("enter the id of %d employee\n",i);
+   	 scanf("%d",&e[i]->id);
+   	 printf("enter the name of department of %d employee\n",i);
+   	 scanf("%s",e[i]->dept);
+   	 printf("enter the salary of %d employee\n",i);
+   	 scanf("%f",&e[i]->salary);
+    }
+    for (int i=0;i<n;i++)
+    {
+   	 printf("the name of %d employee is %s\n",i,e[i]->name);
+   	 printf("the id of %d employee is %d\n",i,e[i]->id);
+   	 printf("the name of department of %d employee is %s\n",i,e[i]->dept);
+   	 printf("the salary of %d employee is %f\n",i,e[i]->salary);
+    }
+}
